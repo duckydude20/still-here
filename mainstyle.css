@@ -1,0 +1,8 @@
+.main-screen-heading{
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    font-size: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
