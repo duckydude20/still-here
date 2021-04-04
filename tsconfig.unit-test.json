@@ -1,0 +1,11 @@
+// automatically handles import and export
+// and builds required sources too
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./build"
+    },
+    "include": [
+        "./test/unit/*.ts"
+    ]
+}

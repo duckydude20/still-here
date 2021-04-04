@@ -1,0 +1,20 @@
+=========================================
+
+code duplication in driver.ts:
+    container_item
+    inner_item 
+
+
+QuizGenerator.test.ts can be a good integration test then a unit test with many mocks; IDK
+
+remove duplication in assertElement
+
+remove duplication in clickingOnButtons
+
+refactor Driver class into smaller class
+
+
+I could use something like; IDK lets wait if i really need this
+let mainPageAsserter = PageAsserter.for(mainContainer);
+// and calling it like 
+mainPageAsserter.assertElement(1, 'BUTTON', "Play"); 
