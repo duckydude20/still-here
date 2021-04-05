@@ -89,8 +89,9 @@ class QuizGenerator {
         return this.newQuiz();
     }
     newQuiz() {
-        const answerKeyIndex = this.numberGenerator(this.database.getKeyCount());
-        const questionIndex = this.numberGenerator(this.database.getValueCount(answerKeyIndex));
+        const indexes = this.getKeyAndValueIndex();
+        const answerKeyIndex = indexes[0];
+        const questionIndex = indexes[1];
         const question = this.database.popValueAt(answerKeyIndex, questionIndex);
         const answerKey = this.database.getKeyAt(answerKeyIndex);
         let options = [answerKey];
@@ -105,6 +106,16 @@ class QuizGenerator {
         }
         this.shuffle(options);
         return new Quiz_1.Quiz(question, options, options.indexOf(answerKey));
+    }
+    getKeyAndValueIndex() {
+        let answerKeyIndex = this.numberGenerator(this.database.getKeyCount());
+        let valueCount = this.database.getValueCount(answerKeyIndex);
+        while (valueCount === 0) {
+            answerKeyIndex = this.numberGenerator(this.database.getKeyCount());
+            valueCount = this.database.getValueCount(answerKeyIndex);
+        }
+        const valueIndex = this.numberGenerator(valueCount);
+        return [answerKeyIndex, valueIndex];
     }
     shuffle(a) {
         var j, x, i;
